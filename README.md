@@ -18,6 +18,12 @@ The station use at support the weather mast from Met Norway SN99857.
 |2024-04-18 12:40  | Louis UNIS   | Leaving area                      |
 
 
+
+---
+### Logging informations
+
+The data logger sample interval is *10s* which is then use in the logging tables as presented bellow.
+
 ---
 ## Data description
 
