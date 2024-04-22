@@ -11,7 +11,7 @@ The station use at support the weather mast from Met Norway SN99857.
 | Time (UTC)       | Operator     | Information                       | Data | Pictures |
 |------------------|--------------|-----------------------------------|------|----------|
 |2024-04-05 12:10  | Louis UNIS   | Arriving on the station site      ||
-|2024-04-05 13:05  | Louis UNIS   | Station up and running            ||[AWS01](/pictures/AWS01) [AWS02](/pictures/AWS02) [AWS03](/pictures/AWS03) [AWS04](/pictures/AWS04) [AWS05](/pictures/AWS05)|
+|2024-04-05 13:05  | Louis UNIS   | Station up and running            ||[AWS01](/pictures/AWS01.jpg) [AWS02](/pictures/AWS02.jpg) [AWS03](/pictures/AWS03.jpg) [AWS04](/pictures/AWS04.jpg) [AWS05](/pictures/AWS05.jpg)|
 |2024-04-05 13:10  | Louis UNIS   | Leaving area                      ||
 |2024-04-18 12:15  | Louis UNIS   | Arriving on the station site      ||
 |2024-04-18 12:25  | Louis UNIS   | Data collection                   |[20240418 Data Access](/data/20240418)|
