@@ -1,0 +1,134 @@
+'CR1000
+'Created by Short Cut (4.4)
+'Updated by Louis Pauchet / UNIS
+
+'Declare Variables and Units
+Public BattV
+Public PTemp_C
+Public CVData(14)
+Public SlrTF_MJ
+Public CVMeta As String * 40
+Public WSPrev
+Public WindDirPrev
+Public MaxWSprev
+Public Invalid_Wind As Long
+
+Alias CVData(1)=SlrFD_W
+Alias CVData(2)=Rain_mm
+Alias CVData(3)=Strikes
+Alias CVData(4)=Dist_km
+Alias CVData(5)=WS_ms
+Alias CVData(6)=WindDir
+Alias CVData(7)=MaxWS_ms
+Alias CVData(8)=AirT_C
+Alias CVData(9)=VP_mbar
+Alias CVData(10)=BP_mbar
+Alias CVData(11)=RH
+Alias CVData(12)=RHT_C
+Alias CVData(13)=TiltNS_deg
+Alias CVData(14)=TiltWE_deg
+
+Units BattV=Volts
+Units PTemp_C=Deg C
+Units SlrTF_MJ=MJ/m^2
+Units SlrFD_W=W/m^2
+Units Rain_mm=mm
+Units Strikes=count
+Units Dist_km=kilometers
+Units WS_ms=meters/second
+Units WindDir=degrees
+Units MaxWS_ms=meters/second
+Units AirT_C=Deg C
+Units VP_mbar=mbar
+Units BP_mbar=mbar
+Units RH=%
+Units RHT_C=Deg C
+Units TiltNS_deg=degrees
+Units TiltWE_deg=degrees
+
+'Define Data Tables
+DataTable(ClimatVIEW_1min,True,-1)
+	DataInterval(0,1,Min,10)
+	Average(1,SlrFD_W,FP2,False)
+	Totalize(1,Rain_mm,FP2,False)
+	WindVector(1,WS_ms,WindDir,FP2,False,0,0,0)
+	FieldNames("WS_ms_S_WVT,WindDir_D1_WVT,WindDir_SD1_WVT")
+	Maximum(1,MaxWS_ms,FP2,False,False)
+	Average(1,AirT_C,FP2,False)
+	Average(1,VP_mbar,IEEE4,False)
+	Average(1,BP_mbar,IEEE4,False)
+	Sample(1,RH,FP2)
+	Average(1,RHT_C,FP2,False)
+	Average(1,TiltNS_deg,FP2,False)
+	Average(1,TiltWE_deg,FP2,False)
+	Sample(1,CVMeta,STRING)
+EndTable
+
+DataTable(ClimatVIEW_1h,True,-1)
+	DataInterval(0,1,Hr,10)
+	Minimum(1,BattV,FP2,False,False)
+	Average(1,SlrFD_W,FP2,False)
+	Totalize(1,Rain_mm,FP2,False)
+	WindVector(1,WS_ms,WindDir,FP2,False,0,0,0)
+	FieldNames("WS_ms_S_WVT,WindDir_D1_WVT,WindDir_SD1_WVT")
+	Average(1,MaxWS_ms,FP2,False)
+	Average(1,AirT_C,FP2,False)
+	Average(1,VP_mbar,IEEE4,False)
+	Average(1,BP_mbar,IEEE4,False)
+	Sample(1,RH,FP2)
+	Average(1,RHT_C,FP2,False)
+	Average(1,TiltNS_deg,FP2,False)
+	Average(1,TiltWE_deg,FP2,False)
+	Totalize(1,SlrTF_MJ,IEEE4,False)
+EndTable
+
+'Main Program
+BeginProg
+	'Main Scan
+	Scan(10,Sec,1,0)
+		'Default CR1000 Datalogger Battery Voltage measurement 'BattV'
+		Battery(BattV)
+		'Default CR1000 Datalogger Wiring Panel Temperature measurement 'PTemp_C'
+		PanelTemp(PTemp_C,_60Hz)
+		'Get ClimaVUE50 Compact Digital Weather Sensor metadata 'CVMeta' every day at midnight in case sensor is swapped or OS is updated
+		If IfTime(0,1,Day) Then
+			SDI12Recorder(CVMeta,1,"0","I!",1,0)
+		EndIf
+		'ClimaVUE50 Compact Digital Weather Sensor measurements
+		'SlrFD_W', 'Rain_mm', 'Strikes', 'Dist_km', 'WS_ms', 'WindDir',
+		'MaxWS_ms', 'AirT_C', 'VP_mbar', BP_mbar', 'RH', 'RHT_C',
+		'TiltNS_deg', and 'TiltWE_deg'
+		'Get data from ClimaVUE50 Compact Digital Weather Sensor
+		SDI12Recorder(CVData(),1,"0","R7!",1,0,-1)
+		'Convert fractional relative humidity into percent relative humidity
+		RH=RH*100
+		'Calculate total solar flux in MJ/m^2 from flux density in W/m^2
+		'The multiplier to calculate total flux was calculated by Short Cut
+		'and based on a program execution rate (scan rate) of 10 Seconds.
+		'If you change the program execution rate outside of Short Cut with the CRBasic Editor
+		'you will need to recalculate this multiplier. See the sensor manual for more details.
+		SlrTF_MJ=SlrFD_W*1E-05
+		'Convert vapor pressure in kPa to mbar
+		VP_mbar=VP_mbar*10
+		'Convert barometric pressure in kPa to mbar
+		BP_mbar=BP_mbar*10
+		'High winds with rain can temporarily interfere with sonic wind measurements causing the sensor to output -9999 or -9990. The following instructions set invalid wind measurements
+		'to the previous valid wind measurements. This will 'flat-line' the measurements until the sensor is able to make good readings again. The Invalid_Wind variable will be set to 1 when
+		'a wind measurement is invalid. For troubleshooting purposes, it is highly recommended that you totalize the Invalid_Wind variable in any output tables you define that include
+		'wind speed and/or direction data from the ClimaVUE50.
+		If WS_ms<0 Then
+			WS_ms=WSPrev
+			WindDir=WindDirPrev
+			MaxWS_ms=MaxWSprev
+			Invalid_Wind=1
+		Else
+			WSPrev=WS_ms
+			WindDirPrev=WindDir
+			MaxWSprev=MaxWS_ms
+			Invalid_Wind=0
+		EndIf
+		'Call Data Tables and Store Data
+		CallTable ClimatVIEW_1min
+		CallTable ClimatVIEW_1h
+	NextScan
+EndProg
