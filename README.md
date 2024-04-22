@@ -17,3 +17,24 @@ The station use at support the weather mast from Met Norway SN99857.
 |2024-04-18 12:25  | Louis UNIS   | Data collection                   |
 |2024-04-18 12:40  | Louis UNIS   | Leaving area                      |
 
+
+---
+## Data description
+
+| Field | 
+|TIMESTAMP|
+|RECORD|
+|SlrFD_W_Avg|
+|Rain_mm_Tot|
+|WS_ms_S_WVT|
+|WindDir_D1_WVT|
+|WindDir_SD1_WVT|
+|MaxWS_ms_Max|
+|AirT_C_Avg|
+|VP_mbar_Avg|
+|BP_mbar_Avg|
+|RH|
+|RHT_C_Avg|
+|TiltNS_deg_Avg|
+|TiltWE_deg_Avg|
+|CVMeta|
