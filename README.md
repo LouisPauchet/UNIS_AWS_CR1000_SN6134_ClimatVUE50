@@ -22,7 +22,7 @@ The station use at support the weather mast from Met Norway SN99857.
 ---
 ### Logging informations
 
-The data logger sample interval is *10s* which is then use in the logging tables as presented bellow.
+The data logger sample interval is **10s** which is then use in the logging tables as presented bellow.
 
 ---
 ## Data description
