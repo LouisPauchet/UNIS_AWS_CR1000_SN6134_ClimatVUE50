@@ -8,8 +8,7 @@ The station use at support the weather mast from Met Norway SN99857.
 ---
 ## History
 
-| Time (UTC) | Operator | Information |
-|------------|----------|-------------|
-|            |          |             |
-|            |          |             |
-|            |          |             |
+| Time (UTC)       | Operator | Information |
+|------------------|----------|-------------|
+|2024-04-05 12:10  |          |             |
+
