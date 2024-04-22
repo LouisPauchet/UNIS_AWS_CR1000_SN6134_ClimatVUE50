@@ -21,21 +21,21 @@ The station use at support the weather mast from Met Norway SN99857.
 ---
 ## Data description
 
-| Field         | 
-|---------------|
-|TIMESTAMP      |
-|RECORD         |
-|SlrFD_W_Avg    |
-|Rain_mm_Tot    |
-|WS_ms_S_WVT|
-|WindDir_D1_WVT|
-|WindDir_SD1_WVT|
-|MaxWS_ms_Max|
-|AirT_C_Avg|
-|VP_mbar_Avg|
-|BP_mbar_Avg|
-|RH|
-|RHT_C_Avg|
-|TiltNS_deg_Avg|
-|TiltWE_deg_Avg|
-|CVMeta|
+| Field         | Unit          | Table logging |
+|---------------|---------------|---------------|
+|TIMESTAMP      |Timestamp (UTC)| 1min & 1h interval|
+|RECORD         |Number||
+|SlrFD_W_Avg    |W/m^2|Average|
+|Rain_mm_Tot    |mm|Total|
+|WS_ms_S_WVT    |m/s|Wind Vector|
+|WindDir_D1_WVT |Deg|Wind Vector|
+|WindDir_SD1_WVT|Deg|Wind Vector|
+|MaxWS_ms_Max   |m/s|Maximum|
+|AirT_C_Avg     |°C|Average|
+|VP_mbar_Avg    |mbar|Average|
+|BP_mbar_Avg    |mbar|Average|
+|RH             |%|Sample
+|RHT_C_Avg      |°C|Average|
+|TiltNS_deg_Avg |Deg|Average|
+|TiltWE_deg_Avg |Deg|Average|
+|CVMeta         ||Sample|
