@@ -11,14 +11,14 @@ The station use as support the weather mast from Met Norway SN99857.
 | Time (UTC)       | Operator     | Information                       | Data | Pictures |
 |------------------|--------------|-----------------------------------|------|----------|
 |2024-04-05 12:10  | Louis UNIS   | Arriving on the station site      ||
-|2024-04-05 13:05  | Louis UNIS   | Station up and running            ||[20240405](/pictures/20240405)|
+|2024-04-05 13:05  | Louis UNIS   | :white_check_mark: Station up and running            ||:link:[20240405](/pictures/20240405)|
 |2024-04-05 13:10  | Louis UNIS   | Leaving area                      ||
 |2024-04-18 12:15  | Louis UNIS   | Arriving on the station site      ||
-|2024-04-18 12:25  | Louis UNIS   | Data collection                   |[20240418 Data Access](/data/20240418)|
+|2024-04-18 12:25  | Louis UNIS   | :chart: Data collection                   |:link:[20240418 Data Access](/data/20240418)|
 |2024-04-18 12:40  | Louis UNIS   | Leaving area                      ||
-|2024-05-03 13:33  | Louis UNIS   | Arriving in the area                      ||
-|2024-05-03 13:36app  | Louis UNIS   | Data collection                      ||
-|2024-05-03 13:40  | Louis UNIS   | Data logger off                      ||
+|2024-05-03 13:33  | Louis UNIS   | Arriving in the area              ||
+|2024-05-03 13:34  | Louis UNIS   | :chart: Data collection                   |:link:[20240503 Data Access](/data/20240503)|
+|2024-05-03 13:40  | Louis UNIS   | :red_circle: Data logger off                   ||:link:[20240405](/pictures/20240503)
 |2024-05-03 13:46  | Louis UNIS   | Leaving area                      ||
 |2024-05-15 10:30  | Louis UNIS   | Arriving on the station site and deploying the new logger box                       ||
 |2024-05-15 11:03  | Louis UNIS   | Station running                       ||
