@@ -23,7 +23,13 @@ The station use as support the weather mast from Met Norway SN99857.
 |2024-05-15 10:30  | Louis UNIS   | Arriving on the station site and deploying the new logger box                       ||
 |2024-05-15 11:03  | Louis UNIS   | :white_check_mark: Station running                       ||
 |2024-05-15 11:11  | Louis UNIS   | Leaving the area                       ||
-
+|2024-07-04 14:00  | Louis UNIS   | Arriving on the station site and trying to connect to the data logger without succes                       ||
+|2024-07-04 14:30  | Louis UNIS   | Leaving the area                       ||
+|2024-07-16 15:20  | Louis UNIS   | Arriving on the station site                      ||
+|  |   | Replacing the power supply to connect on the 12V of the main mast                      ||
+|  |   | Trying to connect to the data logger unsuccesfully                      ||
+|  |   | Replacing the battery of the 2  Netatno sensors                      ||
+|2024-07-16 17:00  | Louis UNIS   | Leaving the area                       ||
 
 ---
 ### Logging informations
